@@ -3,7 +3,7 @@
 // ex. reverseString('hello') === 'olleh'
 
 function reverseString(str) {
-  return 'Let\'s Start'
+  return str.split("").reverse().join("")
 }
 
 
@@ -20,21 +20,45 @@ function isPalindrome(str) {}
 // Return an integer in reverse
 // ex. reverseInt(521) === 125
 
-function reverseInt(int) {}
+function reverseInt(num) {
+  return parseInt(num.toString().split("").reverse().join(""),10)
+}
 
 
 
 // CHALLENGE 4: CAPITALIZE LETTERS
 // Return a string with the first letter of every word capitalized
 // ex. capitalizeLetters('i love javascript') === 'I Love Javascript'
-function capitalizeLetters(str) {}
+
+function capitalizeLetters(str) {
+  return str.split(" ").map((word) => word.substring(0,1).toUpperCase() + word.substring(1)).join(" ")
+}
 
 
 
 // CHALLENGE 5: MAX CHARACTER
 // Return the character that is most common in a string
 // ex. maxCharacter('javascript') == 'a'
-function maxCharacter(str) {}
+function maxCharacter(str) {
+  	let maxLetter
+  	let currentLetter
+    
+    let maxCount = 0
+    let currentCount = 0
+  	str.split("").sort().forEach((letter) => {
+      if(letter === currentLetter){
+      	currentCount++
+      }else{
+        if(maxCount < currentCount){
+          	maxLetter = currentLetter
+            maxCount = currentCount
+        }
+        currentCount = 0
+      	currentLetter = letter
+      }
+    })
+	return maxLetter 
+}
 
 
 
